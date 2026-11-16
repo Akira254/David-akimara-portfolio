@@ -71,7 +71,7 @@ section:last-of-type{border-bottom:0}
 .videobox .cap{margin:0;padding:12px 18px;background:var(--tint-blue);color:#000;font-size:.95rem;border-top:2px solid var(--blue)}
 .videobox .empty{color:#fff}
 
-/* ---------- Image frames (dashboard and cleaning) ---------- */
+/* ---------- Image frames (dashboard,automations and cleaning) ---------- */
 .media{border:2px solid var(--blue);border-radius:16px;overflow:hidden;background:#fff}
 .media .head{padding:14px 18px;background:var(--tint-blue);display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 .media img{width:100%;height:auto;display:block;cursor:zoom-in}
@@ -147,7 +147,7 @@ footer{text-align:center;padding:28px 20px;border-top:3px solid var(--blue);colo
     <h2>About Me</h2>
     <p>Am David Akimara, a remote administrative assistant who helps businesses keep and maintain their data <strong>accurate</strong>, <strong>organized</strong> and <strong>easy to understand</strong>. I work part-time and remotely, and I am comfortable managing several deliverables at once.</p>
     <p>I communicate clearly in English, manage my time carefully, and use AI tools to work faster without losing accuracy. I also understand the terms and conditions for handling data, so client information stays confidential and secure.</p>
-
+     <p>I am tech-savvy and I can <strong>design and automate systems for fast data entry</strong>, such as forms that send every response straight into Google Sheets. This means records are captured quickly, in a consistent format, with far fewer mistakes.</p>
     <h3 class="sub">Meet me in one minute</h3>
     <div class="videobox" id="videoBox"></div>
   </section>
@@ -165,6 +165,7 @@ footer{text-align:center;padding:28px 20px;border-top:3px solid var(--blue);colo
       <div class="card"><h3>Time Management</h3><p>Planning my day so deadlines are met, including on part-time schedules.</p></div>
       <div class="card g"><h3>Communication</h3><p>Proficient in English, with prompt and clear updates to clients.</p></div>
       <div class="card"><h3>Data Handling and Confidentiality</h3><p>A clear understanding of the terms and conditions for handling data.</p></div>
+      <div class="card g"><h3>Automated Data Entry Systems</h3><p>Designing forms connected to Google Sheets that capture and organize data automatically.</p></div>
     </div>
   </section>
 
@@ -180,7 +181,9 @@ footer{text-align:center;padding:28px 20px;border-top:3px solid var(--blue);colo
     <h3 class="sub">Dashboard</h3>
     <p>A dashboard I built from cleaned data. Click an image to enlarge it.</p>
     <div class="grid" id="dashboards" style="grid-template-columns:1fr"></div>
-
+    <h3 class="sub">Automated data entry system</h3>
+    <p>A data entry form I designed that sends responses directly into Google Sheets. Click the image to enlarge it.</p>
+    <div class="grid" id="automations" style="grid-template-columns:1fr"></div>
     <h3 class="sub">Data cleaning samples</h3>
     <p>Before and after examples of messy data I have cleaned. All samples use dummy data to protect client privacy.</p>
     <div class="grid" id="cleaning" style="grid-template-columns:1fr"></div>
@@ -267,6 +270,15 @@ const SETTINGS = {
     // ,{ title: "Contact list", before: "contacts-before.png", after: "contacts-after.png", caption: "Duplicates removed." }
   ]
 };
+    // Automated data entry form connected to Google Sheets
+  automations: [
+    {
+      title: "Data entry form connected to Google Sheets",
+      image: "data-entry-form.png",   // put your screenshot in the same folder
+      caption: "A form that sends each entry straight into a Google Sheet, with no copying and pasting.",
+      link: ""                        // optional: a link to the live form
+    }
+  ],
 /* ================================================= */
 
 const $ = id => document.getElementById(id);
@@ -324,6 +336,20 @@ SETTINGS.dashboards.forEach(d => {
     box.appendChild(el('p','empty','Dashboard coming soon.'));
   }
   $('dashboards').appendChild(box);
+});
+  // Automated data entry images
+SETTINGS.automations.forEach(d => {
+  const box = el('div','media g');
+  const head = el('div','head','<b>' + esc(d.title) + '</b>');
+  if (d.link) head.insertAdjacentHTML('beforeend','<a class="btn" target="_blank" rel="noopener" href="' + esc(d.link) + '">Try the live form</a>');
+  box.appendChild(head);
+  if (d.image) {
+    box.appendChild(makeImg(d.image, d.title));
+    if (d.caption) box.appendChild(el('p','cap',esc(d.caption)));
+  } else {
+    box.appendChild(el('p','empty','Image coming soon.'));
+  }
+  $('automations').appendChild(box);
 });
 
 // Data cleaning samples (before and after)
