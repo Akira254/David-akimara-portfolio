@@ -257,6 +257,15 @@ const SETTINGS = {
       link: ""
     }
   ],
+  // Automated data entry form connected to Google Sheets
+  automations: [
+    {
+      title: "Data entry form connected to Google Sheets",
+      image: "form.jpeg",   // put your screenshot in the same folder
+      caption: "A form that sends each entry straight into a Google Sheet, with no copying and pasting.",
+      link: "https://script.google.com/macros/s/AKfycbw8BbueFNnfz3xtxALezmSNAcGT_prtsDrj98bGBeUdtOcm_s9vN6u2delAfHS_k4BRIw/exec"                        // optional: a link to the live form
+    }
+  ],
 
   // 6. Data cleaning samples. Each sample has a before image and an after image.
   //    To add more, copy one block, add a comma, and change the file names.
@@ -270,15 +279,7 @@ const SETTINGS = {
     // ,{ title: "Contact list", before: "contacts-before.png", after: "contacts-after.png", caption: "Duplicates removed." }
   ]
 };
-    // Automated data entry form connected to Google Sheets
-  automations: [
-    {
-      title: "Data entry form connected to Google Sheets",
-      image: "form.jpeg",   // put your screenshot in the same folder
-      caption: "A form that sends each entry straight into a Google Sheet, with no copying and pasting.",
-      link: "https://script.google.com/macros/s/AKfycbw8BbueFNnfz3xtxALezmSNAcGT_prtsDrj98bGBeUdtOcm_s9vN6u2delAfHS_k4BRIw/exec"                        // optional: a link to the live form
-    }
-  ],
+    
 /* ================================================= */
 
 const $ = id => document.getElementById(id);
